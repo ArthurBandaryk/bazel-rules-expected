@@ -5,10 +5,11 @@ load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
 
 def deps(repo_mapping = {}):
     maybe(
-        git_repository,
+        http_archive,
         name = "com_github_expected",
-        remote = "https://github.com/TartanLlama/expected.git",
-        commit = "96d547c03d2feab8db64c53c3744a9b4a7c8f2c5",
-        shallow_since = "1631006596 +0100",
+        url = "https://github.com/TartanLlama/expected/archive/refs/tags/v1.0.0.tar.gz",
+        sha256 = "8f5124085a124113e75e3890b4e923e3a4de5b26a973b891b3deb40e19c03cee",
+        strip_prefix = "expected-1.0.0",
         repo_mapping = repo_mapping,
+        build_file = "@com_github_3rdparty_expected//:BUILD.bazel",
     )
